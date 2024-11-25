@@ -57,7 +57,7 @@ namespace MarketplaceApp_Register
                 while (emailExist || string.IsNullOrEmpty(email))
                 {
                     email = Console.ReadLine();
-                    emailExist = MarketplaceApp_Domain.Domain.Check_If_Email_Of_Customer_Exists(email);
+                    emailExist = MarketplaceApp_Domain.Registration_Login.Check_If_Email_Of_Customer_Exists(email);
                     if (string.IsNullOrEmpty(email))
                     {
                         Console.Write("Niste unijeli email, unesite ponovno: ");
@@ -76,7 +76,7 @@ namespace MarketplaceApp_Register
                     }
                 }
 
-                MarketplaceApp_Domain.Domain.CreateCustomer(name, email, balance);
+                MarketplaceApp_Domain.Registration_Login.CreateCustomer(name, email, balance);
                 Console.Clear();
                 MarketplaceApp.Program.Main();
             }
@@ -100,14 +100,14 @@ namespace MarketplaceApp_Register
                 while (emailExist || string.IsNullOrEmpty(email))
                 {
                     email = Console.ReadLine();
-                    emailExist = MarketplaceApp_Domain.Domain.Check_If_Email_Of_Customer_Exists(email);
+                    emailExist = MarketplaceApp_Domain.Registration_Login.Check_If_Email_Of_Customer_Exists(email);
                     if (string.IsNullOrEmpty(email))
                     {
                         Console.Write("Niste unijeli email, unesite ponovno: ");
                     }
                 }
 
-                MarketplaceApp_Domain.Domain.CreateSalesman(name, email);
+                MarketplaceApp_Domain.Registration_Login.CreateSalesman(name, email);
                 Console.Clear();
                 MarketplaceApp.Program.Main();
             }

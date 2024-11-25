@@ -26,4 +26,18 @@ namespace MarketplaceApp_Domain_Objects
             Email = email;
         }
     }
+
+    public class Product
+    {
+        public string Name { get; set; }
+        public string Description { get; set; }
+        public Double Price { get; set; }
+
+        public Product(string name, string description, double price)
+        {
+            Name = name;
+            Description = description;
+            Price = price;
+        }
+    }
 }

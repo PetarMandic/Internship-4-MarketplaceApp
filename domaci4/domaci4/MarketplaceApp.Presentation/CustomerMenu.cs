@@ -65,32 +65,64 @@ public class CustomerMenuStructure
 
         static void Overview_Of_All_Available_Products_Structure()
         {
-            
+            Back();
+            Console.Clear();
+            CustomerMenu();
         }
 
         static void Product_Purchase_Structure()
         {
-            
+            Back();
+            Console.Clear();
+            CustomerMenu();
         }
 
         static void Product_Return_Structure()
         {
-            
+            Back();
+            Console.Clear();
+            CustomerMenu();
         }
 
         static void Add_Product_To_List_Of_Favourites_Structure()
         {
-            
+            Back();
+            Console.Clear();
+            CustomerMenu();
         }
 
         static void Overview_Of_Purchase_History_Structure()
         {
-            
+            Back();
+            Console.Clear();
+            CustomerMenu();
         }
 
         static void Overview_Of_Favourites_List_Structure()
         {
-            
+            Back();
+            Console.Clear();
+            CustomerMenu();
+        }
+
+        static void Back()
+        {
+            Console.Write("Unesite broj 1 za povratak: ");
+            var back = 0;
+            var check = false;
+            while (!check)
+            {
+                check = int.TryParse(Console.ReadLine(), out back);
+                if (back != 1 && check == true)
+                {
+                    Console.Write("Unesen je krivi broj, upišite ponovno: ");
+                    check = false;
+                }
+                else if (!check)
+                {
+                    Console.Write("Niste unijeli broj, upišite ponovno: ");
+                }
+            }
         }
     }
 }
