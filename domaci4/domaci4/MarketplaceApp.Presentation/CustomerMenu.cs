@@ -34,19 +34,63 @@ public class CustomerMenuStructure
         switch (action)
         {
             case 1:
+                Console.Clear();
+                Overview_Of_All_Available_Products_Structure();
                 break;
             case 2:
+                Console.Clear();
+                Product_Purchase_Structure();
                 break;
             case 3:
+                Console.Clear();
+                Product_Return_Structure();
                 break;
             case 4:
+                Console.Clear();
+                Add_Product_To_List_Of_Favourites_Structure();
                 break;
             case 5:
+                Console.Clear();
+                Overview_Of_Purchase_History_Structure();
                 break;
             case 6:
+                Console.Clear();
+                Overview_Of_Favourites_List_Structure();
                 break;
             case 7:
+                Console.Clear();
+                MarketplaceApp.Program.Main();
                 break;
+        }
+
+        static void Overview_Of_All_Available_Products_Structure()
+        {
+            
+        }
+
+        static void Product_Purchase_Structure()
+        {
+            
+        }
+
+        static void Product_Return_Structure()
+        {
+            
+        }
+
+        static void Add_Product_To_List_Of_Favourites_Structure()
+        {
+            
+        }
+
+        static void Overview_Of_Purchase_History_Structure()
+        {
+            
+        }
+
+        static void Overview_Of_Favourites_List_Structure()
+        {
+            
         }
     }
 }

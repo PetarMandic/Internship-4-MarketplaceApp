@@ -33,17 +33,47 @@ public class SalesmanMenuStructure
         switch (action)
         {
             case 1:
+                Add_Product_Structure();
                 break;
             case 2:
+                Overview_Of_Salesman_Products_Structure();
                 break;
             case 3:
+                Overview_Of_Earnings_Structure();
                 break;
             case 4:
+                Overview_Of_Sold_Products_Under_Category_Structure();
                 break;
             case 5:
+                Overview_Of_Earnings_In_Certain_Time_Structure();
                 break;
             case 6:
                 break;
+        }
+
+        static void Add_Product_Structure()
+        {
+            
+        }
+
+        static void Overview_Of_Salesman_Products_Structure()
+        {
+            
+        }
+
+        static void Overview_Of_Earnings_Structure()
+        {
+            
+        }
+
+        static void Overview_Of_Sold_Products_Under_Category_Structure()
+        {
+            
+        }
+
+        static void Overview_Of_Earnings_In_Certain_Time_Structure()
+        {
+            
         }
     }
 }
