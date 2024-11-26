@@ -2,7 +2,7 @@ namespace MarketplaceApp_CustomerMenu;
 
 public class CustomerMenuStructure
 {
-    public static void CustomerMenu()
+    public static void CustomerMenu(string email)
     {
         Console.WriteLine("OPCIJE ZA KUPCA");
         Console.WriteLine("1 - Pregled svih proizvoda dostupnih za prodaju s detaljima");
@@ -35,27 +35,27 @@ public class CustomerMenuStructure
         {
             case 1:
                 Console.Clear();
-                Overview_Of_All_Available_Products_Structure();
+                Overview_Of_All_Available_Products_Structure(email);
                 break;
             case 2:
                 Console.Clear();
-                Product_Purchase_Structure();
+                Product_Purchase_Structure(email);
                 break;
             case 3:
                 Console.Clear();
-                Product_Return_Structure();
+                Product_Return_Structure(email);
                 break;
             case 4:
                 Console.Clear();
-                Add_Product_To_List_Of_Favourites_Structure();
+                Add_Product_To_List_Of_Favourites_Structure(email);
                 break;
             case 5:
                 Console.Clear();
-                Overview_Of_Purchase_History_Structure();
+                Overview_Of_Purchase_History_Structure(email);
                 break;
             case 6:
                 Console.Clear();
-                Overview_Of_Favourites_List_Structure();
+                Overview_Of_Favourites_List_Structure(email);
                 break;
             case 7:
                 Console.Clear();
@@ -63,46 +63,46 @@ public class CustomerMenuStructure
                 break;
         }
 
-        static void Overview_Of_All_Available_Products_Structure()
+        static void Overview_Of_All_Available_Products_Structure(string email)
         {
             Back();
             Console.Clear();
-            CustomerMenu();
+            CustomerMenu(email);
         }
 
-        static void Product_Purchase_Structure()
+        static void Product_Purchase_Structure(string email)
         {
             Back();
             Console.Clear();
-            CustomerMenu();
+            CustomerMenu(email);
         }
 
-        static void Product_Return_Structure()
+        static void Product_Return_Structure(string email)
         {
             Back();
             Console.Clear();
-            CustomerMenu();
+            CustomerMenu(email);
         }
 
-        static void Add_Product_To_List_Of_Favourites_Structure()
+        static void Add_Product_To_List_Of_Favourites_Structure(string email)
         {
             Back();
             Console.Clear();
-            CustomerMenu();
+            CustomerMenu(email);
         }
 
-        static void Overview_Of_Purchase_History_Structure()
+        static void Overview_Of_Purchase_History_Structure(string email)
         {
             Back();
             Console.Clear();
-            CustomerMenu();
+            CustomerMenu(email);
         }
 
-        static void Overview_Of_Favourites_List_Structure()
+        static void Overview_Of_Favourites_List_Structure(string email)
         {
             Back();
             Console.Clear();
-            CustomerMenu();
+            CustomerMenu(email);
         }
 
         static void Back()

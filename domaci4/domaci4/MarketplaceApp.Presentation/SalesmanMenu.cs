@@ -1,3 +1,4 @@
+using Data;
 using MarketplaceApp_Domain_Objects;
 using domaci4.MarketplaceApp.Domain;
 
@@ -48,15 +49,15 @@ public class SalesmanMenuStructure
                 break;
             case 3:
                 Console.Clear();
-                Overview_Of_Earnings_Structure(email);
+                Overview_Of_Earnings_Structure(email, currentSalesman);
                 break;
             case 4:
                 Console.Clear();
-                Overview_Of_Sold_Products_Under_Category_Structure(email);
+                Overview_Of_Sold_Products_Under_Category_Structure(email, currentSalesman);
                 break;
             case 5:
                 Console.Clear();
-                Overview_Of_Earnings_In_Certain_Time_Structure(email);
+                Overview_Of_Earnings_In_Certain_Time_Structure(email, currentSalesman);
                 break;
             case 6:
                 Console.Clear();
@@ -100,7 +101,20 @@ public class SalesmanMenuStructure
                 }
             }
             
-            SalesmanOptions.Add_Product(name, email, price, currentSalesman);
+            Console.Write("Unesite kategoriju proizvoda: ");
+            var category = "";
+            while (string.IsNullOrWhiteSpace(category))
+            {
+                category = Console.ReadLine();
+                if (string.IsNullOrEmpty(category))
+                {
+                    Console.Write("Niste unijeli kategoriju, unesite ponovno: ");
+                }
+            }
+
+            var status = "na prodaju";
+            
+            SalesmanOptions.Add_Product(name, description, price, currentSalesman, category, status);
             
             Back();
             Console.Clear();
@@ -115,22 +129,61 @@ public class SalesmanMenuStructure
             SalesmanMenu(email);
         }
 
-        static void Overview_Of_Earnings_Structure(string email)
+        static void Overview_Of_Earnings_Structure(string email, Salesman currentSalesman)
         {
+            SalesmanOptions.Overview_Of_Earnings(currentSalesman);
             Back();
             Console.Clear();
             SalesmanMenu(email);
         }
 
-        static void Overview_Of_Sold_Products_Under_Category_Structure(string email)
+        static void Overview_Of_Sold_Products_Under_Category_Structure(string email, Salesman currentSalesman)
         {
+            var category = "";
+            while (string.IsNullOrWhiteSpace(category))
+            {
+                category = Console.ReadLine();
+                if (string.IsNullOrEmpty(category))
+                {
+                    Console.Write("Niste unijeli kategoriju proizvoda, unesite ponovno: ");
+                }
+            }
+            
+            SalesmanOptions.Overview_Of_Sold_Products_Under_Category(currentSalesman, category);
             Back();
             Console.Clear();
             SalesmanMenu(email);
         }
 
-        static void Overview_Of_Earnings_In_Certain_Time_Structure(string email)
+        static void Overview_Of_Earnings_In_Certain_Time_Structure(string email, Salesman currentSalesman)
         {
+            DateTime firstDate = DateTime.Now;
+            var check = false;
+            while (!check)
+            {
+                check = DateTime.TryParse(Console.ReadLine(), out firstDate);
+                /*if (firstDate.Hour == null || firstDate.Minute == null || firstDate.Second == null)
+                {
+                    
+                }*/
+                if (!check)
+                {
+                    Console.Write("Niste unijeli datum, unesite ponovno: ");
+                }
+            }
+            
+            DateTime secondDate = DateTime.Now;
+            check = false;
+            while (!check)
+            {
+                check = DateTime.TryParse(Console.ReadLine(), out secondDate);
+                if (!check)
+                {
+                    Console.Write("Niste unijeli datum, unesite ponovno: ");
+                }
+            }
+            
+            SalesmanOptions.Overview_Of_Earnings_In_Certain_Time(currentSalesman, firstDate, secondDate);
             Back();
             Console.Clear();
             SalesmanMenu(email);
