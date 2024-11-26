@@ -28,12 +28,13 @@ namespace domaci4.MarketplaceApp.Domain
             var list = ProductData.SalesmanInventory[currentSalesman];
             list.Add(product);
             ProductData.SalesmanInventory[currentSalesman] = list;
+            ProductData.ListOfProducts.Add(product);
         }
 
         public static void Overview_Of_Salesman_Products(Salesman currentSalesman)
         {
             var list = ProductData.SalesmanInventory[currentSalesman];
-            int number = 1;
+            var number = 1;
             
             foreach (var product in list)
             {

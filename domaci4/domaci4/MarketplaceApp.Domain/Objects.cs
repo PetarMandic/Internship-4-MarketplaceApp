@@ -51,14 +51,15 @@ namespace MarketplaceApp_Domain_Objects
 
     public class Transaction
     {
+        private static int idCounter = 1;
         public int Id { get; set; }
         public Customer Customer { get; set; }
         public Salesman Salesman { get; set; }
         public DateTime Date { get; set; }
 
-        public Transaction(int id, Customer customer, Salesman salesman, DateTime date)
+        public Transaction(Customer customer, Salesman salesman, DateTime date)
         {
-            Id = id;
+            Id = idCounter++;
             Customer = customer;
             Salesman = salesman;
             Date = date;

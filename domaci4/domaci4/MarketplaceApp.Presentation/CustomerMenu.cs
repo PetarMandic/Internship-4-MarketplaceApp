@@ -1,3 +1,5 @@
+using domaci4.MarketplaceApp.Domain;
+using MarketplaceApp_Domain_Objects;
 namespace MarketplaceApp_CustomerMenu;
 
 public class CustomerMenuStructure
@@ -31,6 +33,8 @@ public class CustomerMenuStructure
             }
         }
         
+        var currentCustomer = CustomerOptions.FindCustomer(email);
+        
         switch (action)
         {
             case 1:
@@ -39,23 +43,23 @@ public class CustomerMenuStructure
                 break;
             case 2:
                 Console.Clear();
-                Product_Purchase_Structure(email);
+                Product_Purchase_Structure(email,currentCustomer);
                 break;
             case 3:
                 Console.Clear();
-                Product_Return_Structure(email);
+                Product_Return_Structure(email, currentCustomer);
                 break;
             case 4:
                 Console.Clear();
-                Add_Product_To_List_Of_Favourites_Structure(email);
+                Add_Product_To_List_Of_Favourites_Structure(email, currentCustomer);
                 break;
             case 5:
                 Console.Clear();
-                Overview_Of_Purchase_History_Structure(email);
+                Overview_Of_Purchase_History_Structure(email, currentCustomer);
                 break;
             case 6:
                 Console.Clear();
-                Overview_Of_Favourites_List_Structure(email);
+                Overview_Of_Favourites_List_Structure(email, currentCustomer);
                 break;
             case 7:
                 Console.Clear();
@@ -65,40 +69,75 @@ public class CustomerMenuStructure
 
         static void Overview_Of_All_Available_Products_Structure(string email)
         {
+            CustomerOptions.Overview_Of_All_Available_Products();
             Back();
             Console.Clear();
             CustomerMenu(email);
         }
 
-        static void Product_Purchase_Structure(string email)
+        static void Product_Purchase_Structure(string email, Customer currentCustomer)
+        {
+            Console.Write("Unesite id proizvoda koji želite kupiti: ");
+            var id = 0;
+            var idExist = false;
+            var currentProduct = new Product("", "", 0.00, "", "");
+            var check = false;
+            while (!check)
+            {
+                check = int.TryParse(Console.ReadLine(), out id);
+                var output = CustomerOptions.FindProduct(id);
+                idExist = output.Item1;
+                currentProduct = output.Item2;
+                
+                if (!check)
+                {
+                    Console.Write("Niste unijeli broj, unesite ponovno: ");
+                }
+                else if (!idExist)
+                {
+                    Console.Write("Uneseni id ne pripada niti jednom dostupnom proizvodu, unesite ponovno: ");
+                    check = false;
+                }
+            }
+            
+            var purchasePossible = CustomerOptions.IsPurchasePossible(currentProduct, currentCustomer);
+            
+            if (purchasePossible)
+            {
+                CustomerOptions.Product_Purchase(currentProduct, currentCustomer);
+            }
+            else
+            {
+                Console.WriteLine("Nažalost nemate dovoljno sredstava da bi obavili kupnju ovog proizvoda.");
+            }
+            
+            Back();
+            Console.Clear();
+            CustomerMenu(email);
+        }
+
+        static void Product_Return_Structure(string email, Customer currentCustomer)
         {
             Back();
             Console.Clear();
             CustomerMenu(email);
         }
 
-        static void Product_Return_Structure(string email)
+        static void Add_Product_To_List_Of_Favourites_Structure(string email, Customer currentCustomer)
         {
             Back();
             Console.Clear();
             CustomerMenu(email);
         }
 
-        static void Add_Product_To_List_Of_Favourites_Structure(string email)
+        static void Overview_Of_Purchase_History_Structure(string email, Customer currentCustomer)
         {
             Back();
             Console.Clear();
             CustomerMenu(email);
         }
 
-        static void Overview_Of_Purchase_History_Structure(string email)
-        {
-            Back();
-            Console.Clear();
-            CustomerMenu(email);
-        }
-
-        static void Overview_Of_Favourites_List_Structure(string email)
+        static void Overview_Of_Favourites_List_Structure(string email, Customer currentCustomer)
         {
             Back();
             Console.Clear();
