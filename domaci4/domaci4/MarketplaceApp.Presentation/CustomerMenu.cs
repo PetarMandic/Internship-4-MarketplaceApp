@@ -108,7 +108,7 @@ public class CustomerMenuStructure
             }
             else
             {
-                Console.WriteLine("Nažalost nemate dovoljno sredstava da bi obavili kupnju ovog proizvoda.");
+                Console.WriteLine("Nažalost nemate dovoljno sredstava ili proizvod nije na prodaji.");
             }
             
             Back();
@@ -118,6 +118,42 @@ public class CustomerMenuStructure
 
         static void Product_Return_Structure(string email, Customer currentCustomer)
         {
+            Console.Write("Unesite id kupljenog proizvoda koji želite vratiti: ");
+            var id = 0;
+            var idExist = false;
+            var currentProduct = new Product("", "", 0.00, "", "");
+            var check = false;
+            while (!check)
+            {
+                check = int.TryParse(Console.ReadLine(), out id);
+                var output = CustomerOptions.FindProduct(id);
+                idExist = output.Item1;
+                currentProduct = output.Item2;
+                
+                if (!check)
+                {
+                    Console.Write("Niste unijeli broj, unesite ponovno: ");
+                }
+                else if (!idExist)
+                {
+                    Console.Write("Uneseni id ne pripada niti jednom postojećem proizvodu, unesite ponovno: ");
+                    check = false;
+                }
+            }
+            
+            var returnPossible = CustomerOptions.DoesProductBelongToCustomer(currentCustomer, currentProduct);
+
+            if (returnPossible)
+            {
+                Console.WriteLine("Proizvod je uspiješno vraćen.");
+                CustomerOptions.Product_Return(currentCustomer , currentProduct);   
+            }
+            
+            else
+            {
+                Console.WriteLine("Odabrani proizvod ne pripada kupcu.");
+            }
+            
             Back();
             Console.Clear();
             CustomerMenu(email);
@@ -125,6 +161,41 @@ public class CustomerMenuStructure
 
         static void Add_Product_To_List_Of_Favourites_Structure(string email, Customer currentCustomer)
         {
+            Console.Write("Unesite id proizvoda koji želite staviti u listu omiljenih: ");
+            var id = 0;
+            var idExist = false;
+            var currentProduct = new Product("", "", 0.00, "", "");
+            var check = false;
+            while (!check)
+            {
+                check = int.TryParse(Console.ReadLine(), out id);
+                var output = CustomerOptions.FindProduct(id);
+                idExist = output.Item1;
+                currentProduct = output.Item2;
+                
+                if (!check)
+                {
+                    Console.Write("Niste unijeli broj, unesite ponovno: ");
+                }
+                else if (!idExist)
+                {
+                    Console.Write("Uneseni id ne pripada niti jednom postojećem proizvodu, unesite ponovno: ");
+                    check = false;
+                }
+            }
+
+            var odgovarajuci = CustomerOptions.StatusOfProduct(currentProduct);
+
+            if (odgovarajuci)
+            {
+                Console.WriteLine("Proizvod je uspiješno dodan u listu omiljenih.");
+                CustomerOptions.Add_Product_To_List_Of_Favourites(currentCustomer, currentProduct);
+            }
+            else
+            {
+                Console.WriteLine("Odabrani proizvod je već prodan");
+            }
+            
             Back();
             Console.Clear();
             CustomerMenu(email);
@@ -132,6 +203,7 @@ public class CustomerMenuStructure
 
         static void Overview_Of_Purchase_History_Structure(string email, Customer currentCustomer)
         {
+            CustomerOptions.Overview_Of_Purchase_History(currentCustomer);
             Back();
             Console.Clear();
             CustomerMenu(email);
@@ -139,6 +211,7 @@ public class CustomerMenuStructure
 
         static void Overview_Of_Favourites_List_Structure(string email, Customer currentCustomer)
         {
+            CustomerOptions.Overview_Of_Favourites_List(currentCustomer);
             Back();
             Console.Clear();
             CustomerMenu(email);

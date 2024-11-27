@@ -76,9 +76,17 @@ namespace domaci4.MarketplaceApp.Domain
             var earnings = 0.00;
             foreach (var transaction in TransactionData.SalesmanTransactions[currentSalesman])
             {
+                Product product = new Product("", "", 0.00, "", "");
                 if (transaction.Date >= firstDate && transaction.Date <= secondDate)
                 {
-                    var product = TransactionData.ProductTransactions[transaction];
+                    foreach (var kvp in TransactionData.ProductTransactions)
+                    {
+                        if (kvp.Value == transaction)
+                        {
+                            product = kvp.Key;
+                        }
+                    }
+                    
                     earnings += product.Price - product.Price * 0.05;
                 }
             }
