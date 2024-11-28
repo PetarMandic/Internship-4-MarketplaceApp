@@ -1,0 +1,15 @@
+/home/petar/Desktop/Internship-4-MarketplaceApp/domaci4/domaci4/obj/Debug/net8.0/domaci4.GeneratedMSBuildEditorConfig.editorconfig
+/home/petar/Desktop/Internship-4-MarketplaceApp/domaci4/domaci4/obj/Debug/net8.0/domaci4.AssemblyInfoInputs.cache
+/home/petar/Desktop/Internship-4-MarketplaceApp/domaci4/domaci4/obj/Debug/net8.0/domaci4.AssemblyInfo.cs
+/home/petar/Desktop/Internship-4-MarketplaceApp/domaci4/domaci4/obj/Debug/net8.0/domaci4.csproj.CoreCompileInputs.cache
+/home/petar/Desktop/Internship-4-MarketplaceApp/domaci4/domaci4/obj/Debug/net8.0/domaci4.sourcelink.json
+/home/petar/Desktop/Internship-4-MarketplaceApp/domaci4/domaci4/bin/Debug/net8.0/domaci4
+/home/petar/Desktop/Internship-4-MarketplaceApp/domaci4/domaci4/bin/Debug/net8.0/domaci4.deps.json
+/home/petar/Desktop/Internship-4-MarketplaceApp/domaci4/domaci4/bin/Debug/net8.0/domaci4.runtimeconfig.json
+/home/petar/Desktop/Internship-4-MarketplaceApp/domaci4/domaci4/bin/Debug/net8.0/domaci4.dll
+/home/petar/Desktop/Internship-4-MarketplaceApp/domaci4/domaci4/bin/Debug/net8.0/domaci4.pdb
+/home/petar/Desktop/Internship-4-MarketplaceApp/domaci4/domaci4/obj/Debug/net8.0/domaci4.dll
+/home/petar/Desktop/Internship-4-MarketplaceApp/domaci4/domaci4/obj/Debug/net8.0/refint/domaci4.dll
+/home/petar/Desktop/Internship-4-MarketplaceApp/domaci4/domaci4/obj/Debug/net8.0/domaci4.pdb
+/home/petar/Desktop/Internship-4-MarketplaceApp/domaci4/domaci4/obj/Debug/net8.0/domaci4.genruntimeconfig.cache
+/home/petar/Desktop/Internship-4-MarketplaceApp/domaci4/domaci4/obj/Debug/net8.0/ref/domaci4.dll
