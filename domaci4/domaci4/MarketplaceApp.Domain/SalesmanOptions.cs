@@ -29,6 +29,7 @@ namespace domaci4.MarketplaceApp.Domain
             list.Add(product);
             ProductData.SalesmanInventory[currentSalesman] = list;
             ProductData.ListOfProducts.Add(product);
+            ProductData.ListOfProductsCategorys.Add(category);
         }
 
         public static void Overview_Of_Salesman_Products(Salesman currentSalesman)
@@ -45,14 +46,10 @@ namespace domaci4.MarketplaceApp.Domain
 
         public static void Overview_Of_Earnings(Salesman currentSalesman)
         {
-            var list = ProductData.SalesmanInventory[currentSalesman];
-            var earnings = 0.00; 
-            foreach (var product in list)
+            var earnings = 0.00;
+            foreach (var salesmanEarnings in SalesmanData.ListOfSalesmanEarnings[currentSalesman])
             {
-                if (product.Status == "prodano")
-                {
-                    earnings += product.Price - product.Price * 0.05;
-                }
+                earnings += salesmanEarnings.Earnings;
             }
             Console.WriteLine("Ukupna trenutna zarada iznosi: "+earnings);
         }

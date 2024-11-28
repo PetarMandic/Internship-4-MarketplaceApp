@@ -75,6 +75,8 @@ namespace MarketplaceApp_Register
                         Console.Write("Niste unijeli iznos, unesite ponovno: ");
                     }
                 }
+                
+                Console.WriteLine("Dobili ste promotivni kod za uspiješnu registraciju!!!");
 
                 MarketplaceApp_Domain.Registration_Login.CreateCustomer(name, email, balance);
                 Console.Clear();
@@ -83,18 +85,18 @@ namespace MarketplaceApp_Register
 
             static void SalesmanInfo()
             {
-                Console.Write("Unesite ime kupca: ");
+                Console.Write("Unesite ime prodavača: ");
                 var name = "";
                 while (string.IsNullOrEmpty(name))
                 {
                     name = Console.ReadLine();
                     if (string.IsNullOrEmpty(name))
                     {
-                        Console.Write("Niste unijeli ime kupca, unesite ponovno:");
+                        Console.Write("Niste unijeli ime prodavača, unesite ponovno:");
                     }
                 }
 
-                Console.Write("Ime e-mail kupca:  ");
+                Console.Write("Ime e-mail prodavača:  ");
                 var email = "";
                 var emailExist = true;
                 while (emailExist || string.IsNullOrEmpty(email))

@@ -27,6 +27,18 @@ namespace MarketplaceApp_Domain_Objects
         }
     }
 
+    public class SalesmanEarnings
+    {
+        public double Earnings { get; set; }
+        public DateTime Date { get; set; }
+
+        public SalesmanEarnings(double earnings, DateTime date)
+        {
+            Earnings = earnings;
+            Date = date;
+        }
+    }
+
     public class Product
     {
         public string Name { get; set; }
@@ -64,5 +76,24 @@ namespace MarketplaceApp_Domain_Objects
             Salesman = salesman;
             Date = date;
         }
+    }
+
+    public class PromoCode
+    {
+        public string Code { get; set; }
+        public Customer Customer { get; set; }
+        public double Discount { get; set; }
+        public string Category { get; set; }
+        public DateTime Date { get; set; }
+
+        public PromoCode(string code, Customer customer, double discount, string category, DateTime date)
+        {
+            Code = code;
+            Customer = customer;
+            Discount = discount;
+            Category = category;
+            Date = date;
+        }
+        
     }
 }

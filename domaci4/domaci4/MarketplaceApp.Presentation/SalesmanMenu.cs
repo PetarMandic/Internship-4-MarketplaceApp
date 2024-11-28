@@ -139,6 +139,7 @@ public class SalesmanMenuStructure
 
         static void Overview_Of_Sold_Products_Under_Category_Structure(string email, Salesman currentSalesman)
         {
+            Console.Write("Unesite kategoriju proizvoda: ");
             var category = "";
             while (string.IsNullOrWhiteSpace(category))
             {
@@ -157,6 +158,7 @@ public class SalesmanMenuStructure
 
         static void Overview_Of_Earnings_In_Certain_Time_Structure(string email, Salesman currentSalesman)
         {
+            Console.Write("Unesite prvi datum: ");
             DateTime firstDate = DateTime.Now;
             var check = false;
             while (!check)
@@ -171,7 +173,7 @@ public class SalesmanMenuStructure
                     Console.Write("Niste unijeli datum, unesite ponovno: ");
                 }
             }
-            
+            Console.Write("Unesite drugi datum datum: ");
             DateTime secondDate = DateTime.Now;
             check = false;
             while (!check)

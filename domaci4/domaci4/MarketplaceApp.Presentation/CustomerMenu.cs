@@ -101,10 +101,51 @@ public class CustomerMenuStructure
             }
             
             var purchasePossible = CustomerOptions.IsPurchasePossible(currentProduct, currentCustomer);
+            var newPrice = 0.00;
             
             if (purchasePossible)
             {
-                CustomerOptions.Product_Purchase(currentProduct, currentCustomer);
+                var option = CustomerOptions.OptionToUsePromoCode(currentCustomer, currentProduct);
+                var possible = option.Item1;
+                var promoCode = option.Item2;
+
+                if (possible)
+                {
+                    Console.Write("Možete za ovaj proizvod iskoristiti promotivni kod ->  Kod: "+promoCode.Code+"  Popust: "+promoCode.Discount);
+                    Console.WriteLine("-> Da");
+                    Console.WriteLine("-> Ne");
+                    
+                    Console.Write("Odaberite želite li ga iskoristiti: ");
+                    var action = "";
+                    while (string.IsNullOrEmpty(action))
+                    {
+                        action = Console.ReadLine();
+                        if (action != "Da" && action != "Ne")
+                        {
+                            Console.Write("Niste odabrali mogućnost, unesite ponovno: ");
+                            action = "";
+                        }
+                    }   
+
+                    switch (action)
+                    {
+                        case "Da":
+                            Console.WriteLine("Promotivni kod je iskorišten");
+                            newPrice = CustomerOptions.UsePromoCode(currentCustomer, promoCode, currentProduct);
+                            break;
+                        case "Ne":
+                            break;
+                        
+                    }
+                }
+                CustomerOptions.Product_Purchase(currentProduct, currentCustomer, newPrice);
+                Console.WriteLine("Kupnja proizvoda je uspiješno izvržena.");
+                var chance = CustomerOptions.Check_If_Customer_Get_Promo_Code(currentCustomer, currentProduct);
+                if (chance)
+                {
+                    promoCode = CustomerOptions.GeneratePromoCode(currentCustomer);
+                    CustomerOptions.GetPromoCode(currentCustomer, promoCode);
+                }
             }
             else
             {
