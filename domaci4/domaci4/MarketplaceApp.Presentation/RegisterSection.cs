@@ -1,3 +1,7 @@
+using Data;
+using domaci4.MarketplaceApp.Domain;
+using MarketplaceApp_Domain_Objects;
+
 namespace MarketplaceApp_Register
 {
 
@@ -77,7 +81,8 @@ namespace MarketplaceApp_Register
                 }
                 
                 Console.WriteLine("Dobili ste promotivni kod za uspiješnu registraciju!!!");
-
+                
+                Back();
                 MarketplaceApp_Domain.Registration_Login.CreateCustomer(name, email, balance);
                 Console.Clear();
                 MarketplaceApp.Program.Main();
@@ -112,6 +117,26 @@ namespace MarketplaceApp_Register
                 MarketplaceApp_Domain.Registration_Login.CreateSalesman(name, email);
                 Console.Clear();
                 MarketplaceApp.Program.Main();
+            }
+            
+            static void Back()
+            {
+                Console.Write("Unesite broj 1 za povratak: ");
+                var back = 0;
+                var check = false;
+                while (!check)
+                {
+                    check = int.TryParse(Console.ReadLine(), out back);
+                    if (back != 1 && check == true)
+                    {
+                        Console.Write("Unesen je krivi broj, upišite ponovno: ");
+                        check = false;
+                    }
+                    else if (!check)
+                    {
+                        Console.Write("Niste unijeli broj, upišite ponovno: ");
+                    }
+                }
             }
 
         }

@@ -46,6 +46,11 @@ namespace domaci4.MarketplaceApp.Domain
 
         public static void Overview_Of_Earnings(Salesman currentSalesman)
         {
+            if (!SalesmanData.ListOfSalesmanEarnings.ContainsKey(currentSalesman))
+            {
+                SalesmanData.ListOfSalesmanEarnings.Add(currentSalesman, new List<SalesmanEarnings>());
+            }
+            
             var earnings = 0.00;
             foreach (var salesmanEarnings in SalesmanData.ListOfSalesmanEarnings[currentSalesman])
             {
@@ -70,6 +75,16 @@ namespace domaci4.MarketplaceApp.Domain
 
         public static void Overview_Of_Earnings_In_Certain_Time(Salesman currentSalesman, DateTime firstDate, DateTime secondDate)
         {
+            if (!TransactionData.SalesmanTransactions.ContainsKey(currentSalesman))
+            {
+                TransactionData.SalesmanTransactions.Add(currentSalesman, new List<Transaction>());
+            }
+
+            if (!SalesmanData.ListOfSalesmanEarnings.ContainsKey(currentSalesman))
+            {
+                SalesmanData.ListOfSalesmanEarnings.Add(currentSalesman, new List<SalesmanEarnings>());
+            }
+            
             var earnings = 0.00;
             foreach (var transaction in TransactionData.SalesmanTransactions[currentSalesman])
             {
@@ -81,13 +96,21 @@ namespace domaci4.MarketplaceApp.Domain
                         if (kvp.Value == transaction)
                         {
                             product = kvp.Key;
+                            break;
                         }
                     }
-                    
-                    earnings += product.Price - product.Price * 0.05;
+
+                    foreach (var salesmanEarnings in SalesmanData.ListOfSalesmanEarnings[currentSalesman])
+                    {
+                        if (salesmanEarnings.Product == product)
+                        {
+                            earnings += salesmanEarnings.Earnings;
+                        }
+                    }
                 }
             }
             Console.WriteLine("Ukupna trenutna zarada pod u određenom vremenu iznosi: "+earnings);
+            
         }
     }
 }

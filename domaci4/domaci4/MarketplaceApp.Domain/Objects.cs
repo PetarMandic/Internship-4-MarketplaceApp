@@ -31,11 +31,13 @@ namespace MarketplaceApp_Domain_Objects
     {
         public double Earnings { get; set; }
         public DateTime Date { get; set; }
+        public Product Product { get; set; }
 
-        public SalesmanEarnings(double earnings, DateTime date)
+        public SalesmanEarnings(double earnings, DateTime date, Product product)
         {
             Earnings = earnings;
             Date = date;
+            Product = product;
         }
     }
 

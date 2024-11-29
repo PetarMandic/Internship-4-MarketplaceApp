@@ -77,6 +77,9 @@ public class CustomerMenuStructure
 
         static void Product_Purchase_Structure(string email, Customer currentCustomer)
         {
+            Console.WriteLine("SVi DOSTUPNI PROIZVODNI");
+            CustomerOptions.Overview_Of_All_Available_Products();
+            
             Console.Write("Unesite id proizvoda koji želite kupiti: ");
             var id = 0;
             var idExist = false;
@@ -95,8 +98,33 @@ public class CustomerMenuStructure
                 }
                 else if (!idExist)
                 {
-                    Console.Write("Uneseni id ne pripada niti jednom dostupnom proizvodu, unesite ponovno: ");
+                    Console.WriteLine("Uneseni id ne pripada niti jednom dostupnom proizvodu.");
+                    Console.WriteLine("Možete pokušati unijeti ponovno ili se vratiti natrag.");
+                    Console.WriteLine("1 - > Ponovan unos");
+                    Console.WriteLine("2 - > Povratak");
+                    Console.Write("Unesite broj: ");
+                    var action = 0;
                     check = false;
+                    while (!check || (action != 1 && action != 2))
+                    {
+                        check = int.TryParse(Console.ReadLine(), out action);
+                        if (action != 1 && action != 2)
+                        {
+                            Console.Write("Niste unijeli broj, unesite ponovno: ");
+                        }
+                    }
+
+                    switch (action)
+                    {
+                        case 1:
+                            Console.Clear();
+                            Product_Purchase_Structure(email, currentCustomer);
+                            break;
+                        case 2:
+                            Console.Clear();
+                            CustomerMenu(email);
+                            break;
+                    }
                 }
             }
             
@@ -138,6 +166,7 @@ public class CustomerMenuStructure
                         
                     }
                 }
+                
                 CustomerOptions.Product_Purchase(currentProduct, currentCustomer, newPrice);
                 Console.WriteLine("Kupnja proizvoda je uspiješno izvržena.");
                 var chance = CustomerOptions.Check_If_Customer_Get_Promo_Code(currentCustomer, currentProduct);
@@ -177,8 +206,33 @@ public class CustomerMenuStructure
                 }
                 else if (!idExist)
                 {
-                    Console.Write("Uneseni id ne pripada niti jednom postojećem proizvodu, unesite ponovno: ");
+                    Console.WriteLine("Uneseni id ne pripada niti jednom dostupnom proizvodu.");
+                    Console.WriteLine("Možete pokušati unijeti ponovno ili se vratiti natrag.");
+                    Console.WriteLine("1 - > Ponovan unos");
+                    Console.WriteLine("2 - > Povratak");
+                    Console.Write("Unesite broj: ");
+                    var action = 0;
                     check = false;
+                    while (!check || (action != 1 && action != 2))
+                    {
+                        check = int.TryParse(Console.ReadLine(), out action);
+                        if (action != 1 && action != 2)
+                        {
+                            Console.Write("Niste unijeli broj, unesite ponovno: ");
+                        }
+                    }
+
+                    switch (action)
+                    {
+                        case 1:
+                            Console.Clear();
+                            Product_Return_Structure(email, currentCustomer);
+                            break;
+                        case 2:
+                            Console.Clear();
+                            CustomerMenu(email);
+                            break;
+                    }
                 }
             }
             
@@ -202,6 +256,9 @@ public class CustomerMenuStructure
 
         static void Add_Product_To_List_Of_Favourites_Structure(string email, Customer currentCustomer)
         {
+            Console.WriteLine("DOSTUPNI PORIZVODI");
+            CustomerOptions.Overview_Of_All_Available_Products();
+            
             Console.Write("Unesite id proizvoda koji želite staviti u listu omiljenih: ");
             var id = 0;
             var idExist = false;
@@ -220,8 +277,33 @@ public class CustomerMenuStructure
                 }
                 else if (!idExist)
                 {
-                    Console.Write("Uneseni id ne pripada niti jednom postojećem proizvodu, unesite ponovno: ");
+                    Console.WriteLine("Uneseni id ne pripada niti jednom dostupnom proizvodu.");
+                    Console.WriteLine("Možete pokušati unijeti ponovno ili se vratiti natrag.");
+                    Console.WriteLine("1 - > Ponovan unos");
+                    Console.WriteLine("2 - > Povratak");
+                    Console.Write("Unesite broj: ");
+                    var action = 0;
                     check = false;
+                    while (!check || (action != 1 && action != 2))
+                    {
+                        check = int.TryParse(Console.ReadLine(), out action);
+                        if (action != 1 && action != 2)
+                        {
+                            Console.Write("Niste unijeli broj, unesite ponovno: ");
+                        }
+                    }
+
+                    switch (action)
+                    {
+                        case 1:
+                            Console.Clear();
+                            Add_Product_To_List_Of_Favourites_Structure(email, currentCustomer);
+                            break;
+                        case 2:
+                            Console.Clear();
+                            CustomerMenu(email);
+                            break;
+                    }
                 }
             }
 

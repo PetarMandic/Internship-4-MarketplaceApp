@@ -164,7 +164,7 @@ namespace domaci4.MarketplaceApp.Domain
 
             if (action == 1)
             {
-                SalesmanEarnings salesmanEarnings = new SalesmanEarnings(price, DateTime.Now);
+                SalesmanEarnings salesmanEarnings = new SalesmanEarnings(price-price*0.05, DateTime.Now, currentProduct);
                 if (!SalesmanData.ListOfSalesmanEarnings.ContainsKey(salesmanClone))
                 {
                     List<SalesmanEarnings> salesmanEarningsList = new List<SalesmanEarnings>();
@@ -177,7 +177,7 @@ namespace domaci4.MarketplaceApp.Domain
             }
             else
             {                                                                                                                                                                                                       
-                SalesmanEarnings salesmanEarnings = new SalesmanEarnings(currentProduct.Price, DateTime.Now);
+                SalesmanEarnings salesmanEarnings = new SalesmanEarnings(currentProduct.Price-currentProduct.Price*0.05, DateTime.Now, currentProduct);
                 if (!SalesmanData.ListOfSalesmanEarnings.ContainsKey(salesmanClone))
                 {
                     List<SalesmanEarnings> salesmanEarningsList = new List<SalesmanEarnings>();
@@ -205,20 +205,11 @@ namespace domaci4.MarketplaceApp.Domain
         
         public static void Product_Return(Customer currentCustomer, Product currentProduct)
         {
-            var newBalance = currentCustomer.Balance + currentProduct.Price;
+            var newBalance = 0.00;
             Customer customerClone = new Customer("", "", 0.00);
             Salesman salesmanClone = new Salesman("", "");
             Product productClone = new Product("", "", 0.00, "", "");
-            
-            foreach (var customer in CustomerData.listOfCustomers)
-            {
-                if (currentCustomer == customer)
-                {
-                    customer.Balance = newBalance;
-                    customerClone = customer;
-                    break;
-                }
-            }
+
             
             foreach (var salesman in SalesmanData.listOfSalesman)
             {
@@ -231,6 +222,25 @@ namespace domaci4.MarketplaceApp.Domain
                     } 
                 }
             }
+
+            foreach (var salesmanEarnings in SalesmanData.ListOfSalesmanEarnings[salesmanClone])
+            {
+                if (salesmanEarnings.Product == currentProduct)
+                {
+                    newBalance = currentCustomer.Balance + salesmanEarnings.Earnings * 0.8;
+                }
+            }
+            
+            foreach (var customer in CustomerData.listOfCustomers)
+            {
+                if (currentCustomer == customer)
+                {
+                    customer.Balance = newBalance;
+                    customerClone = customer;
+                    break;
+                }
+            }
+            
             
             foreach (var product in ProductData.ListOfProducts)
             {
