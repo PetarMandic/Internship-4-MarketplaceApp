@@ -1,5 +1,6 @@
 ﻿using System;
 using MarketplaceApp_Domain;
+using domaci4.MarketplaceApp.Domain;
 
 namespace MarketplaceApp
 {
@@ -7,6 +8,8 @@ namespace MarketplaceApp
     {
         public static void Main()
         {
+            InitialData.InitialDataFunction();
+            
             Console.WriteLine("1 - Registracija korisnika");
             Console.WriteLine("2 - Prijava korisnika");
             Console.WriteLine("3 - Izlaz iz aplikacije");
